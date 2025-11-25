@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employer;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
@@ -9,7 +10,7 @@ Route::get('/', function () {
 
 Route::get('/jobs', function() {
     return view('jobs', [
-        'jobs'=> Job::all()
+        'jobs'=> Job::with('employer')->get()
     ]);
 });
 
